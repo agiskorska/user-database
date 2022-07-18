@@ -1,7 +1,4 @@
-// Import the app
 const app = require('./app.js')
-
-// Start the server
 
 const PORT = 3000
 
