@@ -1,0 +1,14 @@
+{
+  "name": "user-inferface",
+  "version": "1.0.0",
+  "description": "example using api with simple client",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watchAll"
+  },
+  "author": "Aggie Skorska",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^28.1.3"
+  }
+}
