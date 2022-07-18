@@ -32,16 +32,20 @@ app.post( "/newuser", (req, res) => {
 });
 
 app.put('/user/:id', (req, res) => {
-    data.filter(item => {
+    const filteredData = data.filter(item => {
         if(item.id == req.params.id) {
             item["first_name"] = req.body.name
             item["last_name"] = req.body.surname
             item["email"] = req.body.email
             item["gender"] = req.body.gender
             res.send(item)
-        } 
+        }
     })
-    res.status(200)
+    if( filteredData.length == 1) {
+        res.status(200)
+    } else {
+        res.send("<h1>Sorry, no user with this ID found</h1>").status(404)
+    }
 })
 
 module.exports = app;
