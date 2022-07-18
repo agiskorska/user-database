@@ -53,4 +53,14 @@ let data = [
         })
         .expect(200, done);
     });
+    it('responds to get /home with status 200', (done) => {
+        request(api)
+        .get('/home')
+        .expect("Content-Type", /json/)
+        .expect((res) => {
+            expect(res.body.length).toBe(1000);
+            expect(res.body[0].email).toBe('nmacartney0@prnewswire.com')
+        })
+        .expect(200, done);
+    });
 })
