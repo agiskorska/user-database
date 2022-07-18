@@ -14,6 +14,7 @@ app.get(["/", "/home"], (req,res) => {
 
 
 app.post( "/newuser", (req, res) => {
+    console.log(req.body)
     const newEntry = {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
