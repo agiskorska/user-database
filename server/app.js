@@ -12,18 +12,36 @@ app.get(["/", "/home"], (req,res) => {
     res.json(data)
 });
 
-
 app.post( "/newuser", (req, res) => {
-    console.log(req.body)
+
+    const ip = req.headers['x-forwarded-for'] ||
+    req.socket.remoteAddress ||
+    null;
+    const id = data.length
     const newEntry = {
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
+        id: id,
+        first_name: req.body.name,
+        last_name: req.body.surname,
         email: req.body.email,
         gender: req.body.gender,
-        ip_address: req.body.ip_address
+        ip_address: ip
     };
+
     data.push(newEntry);
     res.status(201).send(newEntry);
 });
+
+app.put('/user/:id', (req, res) => {
+    data.filter(item => {
+        if(item.id == req.params.id) {
+            item["first_name"] = req.body.name
+            item["last_name"] = req.body.surname
+            item["email"] = req.body.email
+            item["gender"] = req.body.gender
+            res.send(item)
+        } 
+    })
+    res.status(200)
+})
 
 module.exports = app;
