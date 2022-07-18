@@ -48,7 +48,7 @@ let data = [
         .get('/')
         .expect("Content-Type", /json/)
         .expect((res) => {
-            expect(res.body.length).toBe(1000);
+            expect(res.body.length).toBeGreaterThan(3);
             expect(res.body[0].email).toBe('nmacartney0@prnewswire.com')
         })
         .expect(200, done);
@@ -58,9 +58,33 @@ let data = [
         .get('/home')
         .expect("Content-Type", /json/)
         .expect((res) => {
-            expect(res.body.length).toBe(1000);
+            expect(res.body.length).toBeGreaterThan(3);
             expect(res.body[0].email).toBe('nmacartney0@prnewswire.com')
         })
         .expect(200, done);
     });
+
+    it('responds to /newuser with status 201', (done) => {
+        const mockData = {
+            first_name: "Aggie",
+            last_name: "Skra",
+            email: "skora@businessinsider.com",
+            gender: "Non-binary",
+            ip_address: "154.22.999.29"
+        }
+        request(api)
+        .post('/newuser')
+        .expect('Content-Type', /json/)
+        .send(mockData)
+        .expect(201)      
+        .expect((res) => {
+            console.log(res.body)
+            expect(res.body.email).toBe(mockData.email)
+
+          })
+        .end((err, res) => {
+        if (err) return done(err);
+        return done();
+        });
+    })
 })
