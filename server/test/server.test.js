@@ -87,4 +87,18 @@ let data = [
         return done();
         });
     })
+
+    it('Responds to /user/:id with status 200', (done) => {
+        request(api)
+        .put('/user/1')
+        .send({
+            email: "skora@gmail.com",
+            gender: "Female",
+        })
+        .expect(200)
+        .end((err, res) => {
+            if (err) return done(err);
+            return done();
+        });
+    })
 })
