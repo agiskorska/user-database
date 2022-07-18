@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>User rest api</title>
+    <link rel="stylesheet" href="assets/styles/style.css">
+  </head>
+  <body>
+
+    <h1>This is my client database</h1>
+    <section class="table-section hidden">
+        <form action="" id="user-form">
+            <input type="text" id="first_name" placeholder="enter your first name">
+            <input type="text" id="last_name" placeholder="enter your last name">
+            <input type="text" id="email" placeholder="enter your email">
+            <select name="gender" id="gender">
+                <option value="female">female</option>
+                <option value="male">male</option>
+                <option value="non-binary">non-binary</option>
+                <option value="prefer">prefer not to say</option>
+            </select>            
+            <input type="text" id="ip_address" placeholder="enter your ip">
+            <button type="submit" value="submit" id="button">Submit</button>
+        </form>
+    </section>
+
+	<script src="./assets/js/form.js"></script>
+  </body>
+</html>
